@@ -33,8 +33,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Match the base in vite.config.ts (repo name for GitHub Pages)
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          # Root site (quivlo-flashcards.github.io) uses base '/'; project sites use /repo-name/
+          VITE_BASE_PATH: ${{ github.repository == 'Quivlo-Flashcards/quivlo-flashcards.github.io' && '/' || format('/{0}/', github.event.repository.name) }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
