@@ -1,3 +1,6 @@
+const base = import.meta.env.BASE_URL || '/'
+const logoPath = `${base}AppIcon-1024.png`
+
 const footerLinks = [
   { label: 'Privacy Policy', href: '#' },
   { label: 'Terms of Service', href: '#' },
@@ -10,8 +13,21 @@ export function Footer() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
           <a href="#" className="flex items-center gap-2.5 font-bold text-lg text-slate-900 dark:text-white touch-manipulation">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-sm font-extrabold">
-              Q
+            <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl overflow-hidden ring-2 ring-white/50 dark:ring-slate-800/50">
+              <img
+                src={logoPath}
+                alt=""
+                className="h-full w-full object-cover"
+                onError={(e) => {
+                  const target = e.currentTarget
+                  target.style.display = 'none'
+                  const fallback = target.nextElementSibling
+                  if (fallback) (fallback as HTMLElement).style.display = 'flex'
+                }}
+              />
+              <span className="absolute inset-0 hidden items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-sm font-extrabold" aria-hidden>
+                Q
+              </span>
             </span>
             Quivlo
           </a>
