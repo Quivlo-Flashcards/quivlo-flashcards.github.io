@@ -1,5 +1,7 @@
+const base = import.meta.env.BASE_URL || '/'
+
 const footerLinks = [
-  { label: 'Privacy Policy', href: '#' },
+  { label: 'Privacy Policy', href: `${base}privacy.html` },
   { label: 'Terms of Service', href: '#' },
   { label: 'Support', href: 'mailto:quivlo.app@gmail.com' },
 ]
